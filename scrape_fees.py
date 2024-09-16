@@ -66,7 +66,7 @@ def run(playwright, base_url, filename):
                     op = container.inner_text().replace("\n+", "").replace("(", "\n(").replace(",", "")
                     lines = [line for index, line in enumerate(op.split("\n")) if index not in [1, 2, 4, 9]]
                     op = ",".join(lines).replace(" ,", ",")
-                    op = op[::-1].replace(",", " ", 1)[::-1]
+                    op = op[::-1].replace(",", " ", 1)[::-1].replace("st", "").replace("th", "").replace("rd", "").replace("nd", "")
                     file.write(op + "\n")
             else:
                 print(f"Found only {len(tx_containers)} transaction items, waiting for more to load...")
